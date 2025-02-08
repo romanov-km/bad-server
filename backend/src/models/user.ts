@@ -131,7 +131,7 @@ userSchema.pre('save', async function hashingPassword(next) {
 // Можно лучше: централизованное создание accessToken и  refresh токена
 
 userSchema.methods.generateAccessToken = function generateAccessToken() {
-    const user = this
+    const user: any = this
     // Создание accessToken токена возможно в контроллере авторизации
     return jwt.sign(
         {
@@ -148,7 +148,7 @@ userSchema.methods.generateAccessToken = function generateAccessToken() {
 
 userSchema.methods.generateRefreshToken =
     async function generateRefreshToken() {
-        const user = this
+        const user: any = this
         // Создание refresh токена возможно в контроллере авторизации/регистрации
         const refreshToken = jwt.sign(
             {
